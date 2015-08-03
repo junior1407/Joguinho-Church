@@ -1,9 +1,11 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 public class Dado : MonoBehaviour
 {
 	GameBoardController controller;
+	public Button botao_op;
 	GameObject atual;
 	public LayerMask dieValueColliderLayer = -1;
 	public  int currentValue = 1;
@@ -22,9 +24,11 @@ public class Dado : MonoBehaviour
 	{
 		corpo = gameObject.GetComponent<Rigidbody> ();
 		controller = GameObject.Find ("GameBoardController").GetComponent<GameBoardController>();
-
+		GameObject botao_de_rolar = GameObject.Find ("Button");
+		botao_op= botao_de_rolar.GetComponent<Button> ();
 
 	}
+
 
 	
 	void Update ()
@@ -48,11 +52,12 @@ public class Dado : MonoBehaviour
 
 	public void rolar()
 	{
-
+		botao_op.interactable = false;
 		corpo.AddForce (Random.onUnitSphere * força, forceMode);
 		corpo.AddTorque (Random.onUnitSphere * angularTorque, forceMode);
 		Debug.Log ("Inicio rotina");
 		StartCoroutine("rolarDados");
+
 
 	}
 

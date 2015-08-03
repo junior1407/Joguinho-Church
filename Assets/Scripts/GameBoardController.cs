@@ -72,7 +72,7 @@ public class GameBoardController : MonoBehaviour
 
 	}
 
-	public void ProximoPlayer ()
+	public IEnumerator ProximoPlayer ()
 	{
 		Debug.Log ("Passando de Player");
 
@@ -87,21 +87,10 @@ public class GameBoardController : MonoBehaviour
 			
 		} else {
 			player_atual = players [0];
-
-			//Debug.Log (players.FindIndex (player_atual));
-//		players.Indexof ();
-			/*	foreach (GameObject player in players) {
-
-		}*/
 		}
 		Atualizar_Texto ();
 		script_atual = player_atual.GetComponent<PlayerScript> ();
-		if (script_atual.posicao_atual <20) {
-			 StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,4.23f)));
-		}
-		if ((script_atual.posicao_atual >= 20)&(script_atual.posicao_atual <= 33)) {
-			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,12.65f)));
-		}
+		yield return StartCoroutine (CheckarCamera (script_atual));
 		/*if ((script_atual.posicao_atual >= ALGO)&(script_atual.posicao_atual <= ALGO)) {
 			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,21.01f)));
 		}
@@ -111,10 +100,28 @@ public class GameBoardController : MonoBehaviour
 		if ((script_atual.posicao_atual >= ALGO)&(script_atual.posicao_atual <= ALGO)) {
 			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,37.83f)));
 		}*/
-
-
-
+		scriptDado.botao_op.interactable = true;
 	}
+	public IEnumerator CheckarCamera(PlayerScript script_atual){
+	
+		if (script_atual.posicao_atual <22) {
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,4.23f)));
+		}
+		if ((script_atual.posicao_atual >=22)&(script_atual.posicao_atual <= 33)) {
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,12.65f)));
+		}
+		if ((script_atual.posicao_atual >=34)&(script_atual.posicao_atual <= 46)) {
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,21.01f)));
+		}
+		if ((script_atual.posicao_atual >=47)&(script_atual.posicao_atual <= 58)) {
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,29.47f)));
+		}
+		if ((script_atual.posicao_atual >=59)) {
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,37.83f)));
+		}
+	
+	}
+
 
 
 	public IEnumerator moverdaCamera(Vector3 nova_pos)	{
@@ -184,6 +191,7 @@ public class GameBoardController : MonoBehaviour
 
 		InicializaDado ();
 
+
 		//teste = new BaseCasa (boardPositions [2], 2); 
 /*
 		pai = GameObject.Find ("Casa2");
@@ -240,6 +248,7 @@ public class GameBoardController : MonoBehaviour
 				//Debug.Log (casas[i].mensagem);
 				casas [i].Executar ();
 				if (casas [i].GetType () == typeof(CasaJogarNovamente)) {
+					scriptDado.botao_op.interactable=true;
 					yield break;
 				}
 				if (casas [i].GetType () == typeof(CasaAvancar)) {
@@ -254,7 +263,7 @@ public class GameBoardController : MonoBehaviour
 		}
 			
 	
-		ProximoPlayer ();
+		StartCoroutine (ProximoPlayer ()); 	
 
 	}
 
@@ -337,7 +346,7 @@ public class GameBoardController : MonoBehaviour
 
 	void Update ()
 	{
-		if (Input.GetKeyDown(KeyCode.A)) {
+		/*if (Input.GetKeyDown(KeyCode.A)) {
 			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,4.23f)));
 		}
 		if (Input.GetKeyDown(KeyCode.S)) {
@@ -352,12 +361,21 @@ public class GameBoardController : MonoBehaviour
 		if (Input.GetKeyDown(KeyCode.G)) {
 			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,37.83f)));
 		}
-
+*/
+		if (Input.GetKeyDown (KeyCode.A)) {
+			StartCoroutine (mover (21));
+		}
+		if (Input.GetKeyDown (KeyCode.S)) {
+			StartCoroutine (mover (15));
+		}
+		if (Input.GetKeyDown (KeyCode.D)) {
+			StartCoroutine (mover (6));
+		}
 
 		
 		
 
-	}
-}
+
+	}}
 
 
