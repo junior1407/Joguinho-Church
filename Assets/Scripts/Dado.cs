@@ -36,7 +36,7 @@ public class Dado : MonoBehaviour
 
 
 
-			StartCoroutine("rolarDados");
+
 		
 		}
 
@@ -46,13 +46,19 @@ public class Dado : MonoBehaviour
 	
 	}
 
-	IEnumerator rolarDados ()
+	public void rolar()
 	{
-		corpo.AddForce (Vector3.up * 50f);
-		corpo.AddTorque (Vector3.right * 200f);
+
 		corpo.AddForce (Random.onUnitSphere * força, forceMode);
 		corpo.AddTorque (Random.onUnitSphere * angularTorque, forceMode);
 		Debug.Log ("Inicio rotina");
+		StartCoroutine("rolarDados");
+
+	}
+
+	IEnumerator rolarDados ()
+	{
+		/**/
 
 		yield return StartCoroutine("Checkagem");
 		Debug.Log ("Fim rotina");

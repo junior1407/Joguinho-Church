@@ -17,11 +17,15 @@ public class AplicarForçaRandom : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
-		if(Input.GetButtonDown(buttonName))
+		/*if(Input.GetButtonDown(buttonName))
 		{
-			corpo.AddForce(Random.onUnitSphere * força, forceMode);
-			corpo.AddTorque(Random.onUnitSphere * angularTorque, forceMode);
-			corpo.IsSleeping();
-		}
+
+		}*/
+	}
+
+	public void rolar (){
+		corpo.AddForce(Random.onUnitSphere * força, forceMode);
+		corpo.AddTorque(Random.onUnitSphere * angularTorque, forceMode);
+		corpo.IsSleeping();
 	}
 }
