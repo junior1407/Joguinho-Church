@@ -371,6 +371,12 @@ public class GameBoardController : MonoBehaviour
 		if (Input.GetKeyDown (KeyCode.D)) {
 			StartCoroutine (mover (6));
 		}
+		if (Input.GetKeyDown (KeyCode.F)) {
+			Object.Instantiate (Resources.Load ("Brilhozz"));
+		}
+		if (Input.GetKeyDown (KeyCode.G)) {
+			Object.Instantiate (Resources.Load ("Estrelas"));
+		}
 
 		
 		

@@ -19,6 +19,7 @@ public class CasaAvancar: BaseCasa
 	public override void Executar ()
 	{
 		quadro.text = mensagem;
+		MostraParticulas ();
 	}
 }
 

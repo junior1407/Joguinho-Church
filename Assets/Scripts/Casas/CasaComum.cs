@@ -17,6 +17,7 @@ public class CasaComum: BaseCasa
 	public override void Executar ()
 	{
 		quadro.text = mensagem;
+		MostraParticulas ();
 	}
 
 	#endregion
