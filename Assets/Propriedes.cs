@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Propriedes : MonoBehaviour {
 
-	public int numero_de_jogadores;
+	public static int numero_de_jogadores;
 
 	void Awake(){
 
@@ -15,6 +15,7 @@ public class Propriedes : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
 	
 	}
 }

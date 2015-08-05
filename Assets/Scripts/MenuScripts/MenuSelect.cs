@@ -18,8 +18,10 @@ public class MenuSelect : MonoBehaviour {
 	}
 	
 	public void comecaJogoRealmente(){
-
+		textgameobject.GetComponent<Text> ();
+		Text text = textgameobject.GetComponent<Text>();
 		Application.LoadLevel ("asda");
+		Propriedes.numero_de_jogadores = System.Int32.Parse(text.text);
 		
 	}
 

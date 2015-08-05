@@ -163,9 +163,12 @@ public class GameBoardController : MonoBehaviour
 		player_atual = players [0];
 		*/
 
-		GameObject[] temp = GameObject.FindGameObjectsWithTag ("jogador");	
+		GameObject[] temp = GameObject.FindGameObjectsWithTag ("jogador");
+
 		players = new GameObject[temp.Length];
+		Debug.Log ("temos " + players.Length);
 		foreach (GameObject atual in temp) {
+			Debug.Log ("Contar");
 			players [atual.GetComponent<PlayerScript> ().ordem] = atual;
 			
 			atual.GetComponent<PlayerScript> ().posicao_atual = 1;
@@ -179,12 +182,39 @@ public class GameBoardController : MonoBehaviour
 
 	}
 
+	public void SpawnaJogadores ()
+	{
+		num_players = Propriedes.numero_de_jogadores;
+
+		Instantiate (Resources.Load ("player/Pecaazul")); 
+		if (num_players >= 2) {
+			Instantiate (Resources.Load ("player/PecaVermelha"));
+			if (num_players >= 3) {
+				Instantiate (Resources.Load ("player/PecaVerde"));
+				if (num_players >= 4) {
+					Instantiate (Resources.Load ("player/PecaAmarela"));
+					if (num_players >= 5) {
+						Instantiate (Resources.Load ("player/PecaPreta"));
+						if (num_players >= 6) {
+							Instantiate (Resources.Load ("player/PecaBranca"));
+						}
+					}
+				}
+			}
+		}
+	
+					
+		
+	}
+
 	void Awake ()
 	{
 		//	quadroPrincipal = GameObject.Find ("textos").GetComponent<Text> ();
 		texto_indicador_vez = objectTextoVez.GetComponent<Text> ();
 		quadroPrincipal = quadro.GetComponent<Text> ();
 		//Debug.Log ("temos "+GameObject.Find("propriedades_jogo").GetComponent<Propriedes>().numero_de_jogadores + " jogadores");
+		SpawnaJogadores ();
+
 		AdquireJogadores ();
 
 		AdquirePosicoesTabuleiro ();

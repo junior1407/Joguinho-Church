@@ -24,7 +24,7 @@ public class ComecaJogo : MonoBehaviour {
 	public void comecaJoguinho()
 	{
 
-		GameObject.Find("propriedades_jogo").GetComponent<Propriedes>().numero_de_jogadores= System.Int32.Parse(textinho);
+	//	GameObject.Find("propriedades_jogo").GetComponent<Propriedes>().numero_de_jogadores= System.Int32.Parse(textinho);
 		comecaJogo = true;
 		if (comecaJogo == true) {
 			//num_jogadores = GameObject.Find ("NumeroPlayers").GetComponent<Text>();
