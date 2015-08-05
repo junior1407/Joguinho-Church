@@ -1,22 +1,22 @@
 fileFormatVersion: 2
-guid: 58e6131670f7a1c4b948524e836b9f1c
-timeCreated: 1437232453
+guid: 96dee1e9b24a86344a69aede9f58a2b8
+timeCreated: 1438804274
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
-    100000: CuboCima
+    100000: Cylinder
     100002: //RootNode
-    100004: Suporte
-    400000: CuboCima
+    100004: Sphere
+    400000: Cylinder
     400002: //RootNode
-    400004: Suporte
-    2300000: CuboCima
-    2300002: Suporte
-    3300000: CuboCima
-    3300002: Suporte
-    4300000: Suporte
-    4300002: CuboCima
+    400004: Sphere
+    2300000: Cylinder
+    2300002: Sphere
+    3300000: Cylinder
+    3300002: Sphere
+    4300000: Cylinder
+    4300002: Sphere
   materials:
     importMaterials: 1
     materialName: 0
@@ -26,6 +26,10 @@ ModelImporter:
     bakeSimulation: 0
     optimizeGameObjects: 0
     motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5

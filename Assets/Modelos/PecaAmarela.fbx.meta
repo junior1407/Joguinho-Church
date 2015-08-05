@@ -1,6 +1,6 @@
 fileFormatVersion: 2
-guid: 6b7cb0cec3444d745a70077245f0cf3d
-timeCreated: 1438730355
+guid: 654829d50d212e242b6ac1f12fb2bae0
+timeCreated: 1438804259
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
@@ -17,8 +17,6 @@ ModelImporter:
     3300002: PecaAmarelaCima
     4300000: PecaAmarelaBaixo
     4300002: PecaAmarelaCima
-    7400000: Default Take
-    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -76,7 +74,7 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   additionalBone: 0
   userData: 
   assetBundleName: 
