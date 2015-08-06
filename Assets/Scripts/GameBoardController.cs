@@ -277,6 +277,7 @@ public class GameBoardController : MonoBehaviour
 				//Debug.Log ("last move");
 				//Debug.Log (casas[i].mensagem);
 				casas [i].Executar ();
+				yield return new WaitForSeconds(2);
 				if (casas [i].GetType () == typeof(CasaJogarNovamente)) {
 					scriptDado.botao_op.interactable=true;
 					yield break;
@@ -393,10 +394,11 @@ public class GameBoardController : MonoBehaviour
 		}
 */
 		if (Input.GetKeyDown (KeyCode.A)) {
-			StartCoroutine (mover (21));
+			StartCoroutine (mover (1));
+
 		}
 		if (Input.GetKeyDown (KeyCode.S)) {
-			StartCoroutine (mover (15));
+			StartCoroutine (mover (65));
 		}
 		if (Input.GetKeyDown (KeyCode.D)) {
 			StartCoroutine (mover (6));

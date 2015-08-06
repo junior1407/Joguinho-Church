@@ -1,4 +1,7 @@
-Pausa para ler mensagens.
-Melhorar os pontos de "andar".
-trigger final.
+trigger final, eu não tô conseguindo fazer o colisor funfar. Se você conseguir fazer ele funcionar na última
+casa, o baú se levantará e a luz acenderá.
+
+Fazer menu quando apertar ESc pra sair do jogo sem ser no alt + F4.
+
+
 kek
