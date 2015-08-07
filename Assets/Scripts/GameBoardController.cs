@@ -79,28 +79,26 @@ public class GameBoardController : MonoBehaviour
 
 	}
 
-	void eventoGG ()
+	IEnumerator eventoGG ()
 	{
-		float tempoInicio = 0.0f;
-		float tempoDesejado = 3.0f;
+
 		// codigo que vai acontecer...
-		//canvasDesativar.SetActive(false);
+		canvasDesativar.SetActive(false);
 
 		Debug.Log ("aeho");
-		//mainCamera.SetActive (false);
-		//cameraFim.SetActive (true);
-		//animator.SetBool("Ativo", true);
-		//Instantiate(luzNice, new Vector3(-4.17f, -0.313f, 41.92f), Quaternion.Euler(-90,0,0));
-		while (tempoInicio < tempoDesejado) {
-			tempoInicio += Time.deltaTime;
-		}
-
-		//Seguintchi, eu quero que tudo acima aconteça (desativar os canvas e abrir o bau instanciando a luz kawaii). Porem, quando se passar 5 segundo mostrando o bau, quero que voce ative o popupFim
-		//no coiso abaixo ja ta dizendo como ativar o canvas.
-
-		//popUpCanvas.SetActive(true);
+		mainCamera.SetActive (false);
+		cameraFim.SetActive (true);
+		animator.SetBool("Ativo", true);
+		Debug.Log ("inicio espera");
+		yield return new WaitForSeconds (5);
+		Debug.Log ("fim espera");
+		Instantiate(luzNice, new Vector3(-4.17f, -0.313f, 41.92f), Quaternion.Euler(-90,0,0));
+		popUpCanvas.SetActive(true);
 	
 
+	}
+	public void chamaOGG(){
+		StartCoroutine (eventoGG ());
 	}
 
 	public IEnumerator ProximoPlayer ()
@@ -310,8 +308,10 @@ public class GameBoardController : MonoBehaviour
 			catch(ArgumentOutOfRangeException e){
 				Debug.Log(e.Message);
 			
-				eventoGG();
-				StopAllCoroutines();yield break;
+
+				StopAllCoroutines();
+				chamaOGG();
+				yield break;
 			}
 			Debug.Log("continuou");
 			//	moveIndividual(i,splayer_atual.ordem);
@@ -445,7 +445,7 @@ public class GameBoardController : MonoBehaviour
 
 		}
 		if (Input.GetKeyDown (KeyCode.S)) {
-			StartCoroutine (mover (63));
+			StartCoroutine (mover (64));
 		}
 		if (Input.GetKeyDown (KeyCode.D)) {
 			StartCoroutine (mover (6));
