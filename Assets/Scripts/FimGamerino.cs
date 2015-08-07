@@ -2,11 +2,10 @@
 using System.Collections;
 
 public class FimGamerino : MonoBehaviour {
-	public Animator animator;
-	public GameObject luzNice;
 
 
-	void start(){
+
+	/*void start(){
 		animator = GetComponent<Animator>();
 	}
 
@@ -21,5 +20,5 @@ void OnCollisionEnter(Collider colisor)
 		}
 
 
-	}
+	}*/
 }

@@ -7,6 +7,12 @@ using System;
 
 public class GameBoardController : MonoBehaviour
 {
+	public GameObject canvasDesativar;
+	public GameObject popUpCanvas;
+	public GameObject mainCamera;
+	public GameObject cameraFim;
+	public Animator animator;
+	public GameObject luzNice;
 	public GameObject main_camera;
 	public List<Transform> boardPositions = new List<Transform> ();
 	public BaseCasa[] casas = new BaseCasa[65];
@@ -75,7 +81,26 @@ public class GameBoardController : MonoBehaviour
 
 	void eventoGG ()
 	{
+		float tempoInicio = 0.0f;
+		float tempoDesejado = 3.0f;
 		// codigo que vai acontecer...
+		//canvasDesativar.SetActive(false);
+
+		Debug.Log ("aeho");
+		//mainCamera.SetActive (false);
+		//cameraFim.SetActive (true);
+		//animator.SetBool("Ativo", true);
+		//Instantiate(luzNice, new Vector3(-4.17f, -0.313f, 41.92f), Quaternion.Euler(-90,0,0));
+		while (tempoInicio < tempoDesejado) {
+			tempoInicio += Time.deltaTime;
+		}
+
+		//Seguintchi, eu quero que tudo acima aconteça (desativar os canvas e abrir o bau instanciando a luz kawaii). Porem, quando se passar 5 segundo mostrando o bau, quero que voce ative o popupFim
+		//no coiso abaixo ja ta dizendo como ativar o canvas.
+
+		//popUpCanvas.SetActive(true);
+	
+
 	}
 
 	public IEnumerator ProximoPlayer ()
@@ -283,6 +308,7 @@ public class GameBoardController : MonoBehaviour
 			
 				}}
 			catch(ArgumentOutOfRangeException e){
+				Debug.Log(e.Message);
 			
 				eventoGG();
 				StopAllCoroutines();yield break;
