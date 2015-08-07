@@ -192,7 +192,7 @@ public class GameBoardController : MonoBehaviour
 		player_atual = players [0];
 		*/
 
-		GameObject[] temp = GameObject.FindGameObjectsWithTag ("jogador");
+			 GameObject[] temp = GameObject.FindGameObjectsWithTag ("jogador");
 
 		players = new GameObject[temp.Length];
 		Debug.Log ("temos " + players.Length);
@@ -298,7 +298,7 @@ public class GameBoardController : MonoBehaviour
 		int inicio;
 		inicio = splayer_atual.posicao_atual;
 
-
+		Debug.Log ("i = "+ inicio+" outra cond: "+ (inicio+valor_dado) );
 		for (int i=inicio; i< inicio+valor_dado; i++) {
 			Debug.Log ("i: "+i);
 			try{ if(i==65){
