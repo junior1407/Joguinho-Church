@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine.UI;
+using System;
 
 public class GameBoardController : MonoBehaviour
 {
@@ -70,6 +71,11 @@ public class GameBoardController : MonoBehaviour
 
 
 
+	}
+
+	void eventoGG ()
+	{
+		// codigo que vai acontecer...
 	}
 
 	public IEnumerator ProximoPlayer ()
@@ -253,6 +259,7 @@ public class GameBoardController : MonoBehaviour
 		//	player_atual.transform.localPosition = casas[pos_casa].getPositionparaPlayer(ordem_player);
 
 		while (tempo_passado<tempo_total) {
+		
 
 			player_atual.transform.localPosition = Vector3.Lerp (player_atual.transform.localPosition, casas [pos_casa].getPositionparaPlayer (ordem_player), tempo_passado / tempo_total);
 			tempo_passado += Time.deltaTime;
@@ -267,10 +274,23 @@ public class GameBoardController : MonoBehaviour
 		PlayerScript splayer_atual = player_atual.GetComponent<PlayerScript> ();
 		int inicio;
 		inicio = splayer_atual.posicao_atual;
-		for (int i=inicio; i< inicio+valor_dado; i++) {
 
+
+		for (int i=inicio; i< inicio+valor_dado; i++) {
+			Debug.Log ("i: "+i);
+			try{ if(i==65){
+					throw new ArgumentOutOfRangeException("OI");
+			
+				}}
+			catch(ArgumentOutOfRangeException e){
+			
+				eventoGG();
+				StopAllCoroutines();yield break;
+			}
+			Debug.Log("continuou");
 			//	moveIndividual(i,splayer_atual.ordem);
 			yield return StartCoroutine (moveIndividual (i, splayer_atual.ordem));
+
 			//	player_atual.transform.localPosition = casas[i].getPositionparaPlayer(splayer_atual.ordem);
 			splayer_atual.posicao_atual ++;
 			if (i + 1 == inicio + valor_dado) {
@@ -295,6 +315,7 @@ public class GameBoardController : MonoBehaviour
 			
 	
 		StartCoroutine (ProximoPlayer ()); 	
+
 
 	}
 
@@ -398,16 +419,16 @@ public class GameBoardController : MonoBehaviour
 
 		}
 		if (Input.GetKeyDown (KeyCode.S)) {
-			StartCoroutine (mover (65));
+			StartCoroutine (mover (63));
 		}
 		if (Input.GetKeyDown (KeyCode.D)) {
 			StartCoroutine (mover (6));
 		}
 		if (Input.GetKeyDown (KeyCode.F)) {
-			Object.Instantiate (Resources.Load ("Brilhozz"));
+			Instantiate (Resources.Load ("Brilhozz"));
 		}
 		if (Input.GetKeyDown (KeyCode.G)) {
-			Object.Instantiate (Resources.Load ("Estrelas"));
+			Instantiate (Resources.Load ("Estrelas"));
 		}
 
 		
