@@ -85,13 +85,13 @@ public class GameBoardController : MonoBehaviour
 		// codigo que vai acontecer...
 		canvasDesativar.SetActive(false);
 
-		Debug.Log ("aeho");
+
 		mainCamera.SetActive (false);
 		cameraFim.SetActive (true);
 		animator.SetBool("Ativo", true);
-		Debug.Log ("inicio espera");
+	
 		yield return new WaitForSeconds (5);
-		Debug.Log ("fim espera");
+
 		Instantiate(luzNice, new Vector3(-4.17f, -0.313f, 41.92f), Quaternion.Euler(-90,0,0));
 		popUpCanvas.SetActive(true);
 	
@@ -103,7 +103,7 @@ public class GameBoardController : MonoBehaviour
 
 	public IEnumerator ProximoPlayer ()
 	{
-		Debug.Log ("Passando de Player");
+
 
 
 		PlayerScript script_atual = player_atual.GetComponent<PlayerScript> ();
@@ -195,9 +195,9 @@ public class GameBoardController : MonoBehaviour
 			 GameObject[] temp = GameObject.FindGameObjectsWithTag ("jogador");
 
 		players = new GameObject[temp.Length];
-		Debug.Log ("temos " + players.Length);
+
 		foreach (GameObject atual in temp) {
-			Debug.Log ("Contar");
+
 			players [atual.GetComponent<PlayerScript> ().ordem] = atual;
 			
 			atual.GetComponent<PlayerScript> ().posicao_atual = 1;
@@ -293,27 +293,27 @@ public class GameBoardController : MonoBehaviour
 	public IEnumerator mover (int valor_dado)
 	{
 
-		Debug.Log ("mover pega");
+		Debug.Log(" o valor do dado foi :"+ valor_dado);
 		PlayerScript splayer_atual = player_atual.GetComponent<PlayerScript> ();
 		int inicio;
 		inicio = splayer_atual.posicao_atual;
 
-		Debug.Log ("i = "+ inicio+" outra cond: "+ (inicio+valor_dado) );
+
 		for (int i=inicio; i< inicio+valor_dado; i++) {
-			Debug.Log ("i: "+i);
+
 			try{ if(i==65){
 					throw new ArgumentOutOfRangeException("OI");
 			
 				}}
 			catch(ArgumentOutOfRangeException e){
-				Debug.Log(e.Message);
-			
 
+			
+				Debug.Log(e);
 				StopAllCoroutines();
 				chamaOGG();
 				yield break;
 			}
-			Debug.Log("continuou");
+
 			//	moveIndividual(i,splayer_atual.ordem);
 			yield return StartCoroutine (moveIndividual (i, splayer_atual.ordem));
 
@@ -350,24 +350,22 @@ public class GameBoardController : MonoBehaviour
 
 	public IEnumerator mover_pratras(int valor_dado){
 
-		Debug.Log ("BACK");
 
 		PlayerScript splayer_atual = player_atual.GetComponent<PlayerScript> ();
-		Debug.Log ("Pos:" + splayer_atual.posicao_atual);
+
 		int inicio;
 		inicio = splayer_atual.posicao_atual;
 		for (int i=inicio; i> inicio-valor_dado; i--) {
-			Debug.Log ("Ele agora esta na pos"+splayer_atual.posicao_atual);
+
 			splayer_atual.posicao_atual --;
 			//	moveIndividual(i,splayer_atual.ordem);
-			Debug.Log ("Ele agora ira para pos"+splayer_atual.posicao_atual);
-			Debug.Log ("i vale "+i);
+
 
 		
 			yield return StartCoroutine (moveIndividual (i-2, splayer_atual.ordem));
 			//	player_atual.transform.localPosition = casas[i].getPositionparaPlayer(splayer_atual.ordem);
 
-			Debug.Log ("Pos:" + splayer_atual.posicao_atual);
+
 
 
 		
@@ -382,7 +380,7 @@ public class GameBoardController : MonoBehaviour
 	public IEnumerator mover_semPassar (int valor_dado)
 	{
 		
-		Debug.Log ("mover pega");
+
 		PlayerScript splayer_atual = player_atual.GetComponent<PlayerScript> ();
 		int inicio;
 		inicio = splayer_atual.posicao_atual;
