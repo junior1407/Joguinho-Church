@@ -21,7 +21,7 @@ public class GameBoardController : MonoBehaviour
 	public GameObject objectTextoVez;
 	public GameObject quadro;
 	Text quadroPrincipal;
-	public List<PlayerScript> scriptsplayers = new List<PlayerScript> ();
+	public PlayerScript script_atual;
 	public float speed = 10f;
 	public GameObject player_atual;
 	public int ValorDado;
@@ -108,7 +108,7 @@ public class GameBoardController : MonoBehaviour
 
 
 
-		PlayerScript script_atual = player_atual.GetComponent<PlayerScript> ();
+		script_atual = player_atual.GetComponent<PlayerScript> ();
 		int ordem_player_atual = script_atual.ordem;
 
 		if (ordem_player_atual < players.Length - 1) {
@@ -208,7 +208,7 @@ public class GameBoardController : MonoBehaviour
 		//num_players = scriptsplayers.Count;
 		player_atual = players [0];
 		Atualizar_Texto ();
-
+		script_atual = player_atual.GetComponent<PlayerScript> ();
 		num_players = players.Length;	
 
 	}
@@ -216,7 +216,7 @@ public class GameBoardController : MonoBehaviour
 	public void SpawnaJogadores ()
 	{
 		num_players = Propriedes.numero_de_jogadores;
-
+		num_players = 4;
 		Instantiate (Resources.Load ("player/Pecaazul")); 
 		if (num_players >= 2) {
 			Instantiate (Resources.Load ("player/PecaVermelha"));
@@ -297,9 +297,9 @@ public class GameBoardController : MonoBehaviour
 	{
 
 		Debug.Log(" o valor do dado foi :"+ valor_dado);
-		PlayerScript splayer_atual = player_atual.GetComponent<PlayerScript> ();
+
 		int inicio;
-		inicio = splayer_atual.posicao_atual;
+		inicio = script_atual.posicao_atual;
 
 
 		for (int i=inicio; i< inicio+valor_dado; i++) {
@@ -318,10 +318,10 @@ public class GameBoardController : MonoBehaviour
 			}
 
 			//	moveIndividual(i,splayer_atual.ordem);
-			yield return StartCoroutine (moveIndividual (i, splayer_atual.ordem));
+			yield return StartCoroutine (moveIndividual (i, script_atual.ordem));
 
 			//	player_atual.transform.localPosition = casas[i].getPositionparaPlayer(splayer_atual.ordem);
-			splayer_atual.posicao_atual ++;
+			script_atual.posicao_atual++;
 			if (i + 1 == inicio + valor_dado) {
 				//Debug.Log ("last move");
 				//Debug.Log (casas[i].mensagem);
