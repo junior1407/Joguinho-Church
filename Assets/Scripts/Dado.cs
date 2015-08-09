@@ -37,10 +37,11 @@ public class Dado : MonoBehaviour
 		angular_velocity = corpo.angularVelocity;
 		velocity = corpo.velocity;
 	
-		if (Input.GetButtonDown ("Fire1")) {
+		if (Input.GetKeyDown(KeyCode.Space)) {
+			if (botao_op.IsInteractable()){
+				botao_op.onClick.Invoke();
 
-
-
+			}
 
 		
 		}
