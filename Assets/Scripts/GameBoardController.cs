@@ -7,6 +7,7 @@ using System;
 
 public class GameBoardController : MonoBehaviour
 {
+	public AudioClip somMover;
 	public GameObject canvasDesativar;
 	public GameObject popUpCanvas;
 	public GameObject mainCamera;
@@ -31,6 +32,7 @@ public class GameBoardController : MonoBehaviour
 	Dado scriptDado;
 	public int num_players;
 	public Text texto_indicador_vez;
+
 
 /*	public GameObject pai;
 	public GameObject filho;
@@ -134,19 +136,19 @@ public class GameBoardController : MonoBehaviour
 	public IEnumerator CheckarCamera(PlayerScript script_atual){
 	
 		if (script_atual.posicao_atual <22) {
-			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,4.23f)));
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,13.5f,4.23f)));
 		}
 		if ((script_atual.posicao_atual >=22)&(script_atual.posicao_atual <= 33)) {
-			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,12.65f)));
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,13.5f,12.65f)));
 		}
 		if ((script_atual.posicao_atual >=34)&(script_atual.posicao_atual <= 46)) {
-			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,21.01f)));
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,13.5f,21.01f)));
 		}
 		if ((script_atual.posicao_atual >=47)&(script_atual.posicao_atual <= 58)) {
-			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,29.47f)));
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,13.5f,29.47f)));
 		}
 		if ((script_atual.posicao_atual >=59)) {
-			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,37.83f)));
+			yield return StartCoroutine(moverdaCamera(new Vector3(-0.16f,13.5f,37.83f)));
 		}
 	
 	}
@@ -288,6 +290,7 @@ public class GameBoardController : MonoBehaviour
 			tempo_passado += Time.deltaTime;
 			yield return 0;
 		}
+		AudioSource.PlayClipAtPoint(somMover, Camera.main.transform.position);
 	}
 
 	public IEnumerator mover (int valor_dado)
@@ -412,6 +415,8 @@ public class GameBoardController : MonoBehaviour
 		
 	}
 
+
+	public float contador=0f;
 	void Start ()
 	{
 
@@ -422,43 +427,15 @@ public class GameBoardController : MonoBehaviour
 
 	void Update ()
 	{
-		/*if (Input.GetKeyDown(KeyCode.A)) {
-			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,4.23f)));
-		}
-		if (Input.GetKeyDown(KeyCode.S)) {
-			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,12.65f)));
-		}
-		if (Input.GetKeyDown(KeyCode.D)) {
-			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,21.01f)));
-		}
-		if (Input.GetKeyDown(KeyCode.F)) {
-			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,29.47f)));
-		}
-		if (Input.GetKeyDown(KeyCode.G)) {
-			StartCoroutine(moverdaCamera(new Vector3(-0.16f,12.27f,37.83f)));
-		}
-*/
-		if (Input.GetKeyDown (KeyCode.A)) {
-			StartCoroutine (mover (1));
+		contador += Time.deltaTime;
+	
 
-		}
-		if (Input.GetKeyDown (KeyCode.S)) {
-			StartCoroutine (mover (64));
-		}
-		if (Input.GetKeyDown (KeyCode.D)) {
-			StartCoroutine (mover (6));
-		}
-		if (Input.GetKeyDown (KeyCode.F)) {
-			Instantiate (Resources.Load ("Brilhozz"));
-		}
-		if (Input.GetKeyDown (KeyCode.G)) {
-			Instantiate (Resources.Load ("Estrelas"));
-		}
-
-		
+		if (contador >=240f){
+			Application.Quit();
 		
 
 
+	}
 	}}
 
 

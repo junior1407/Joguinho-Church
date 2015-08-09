@@ -1,10 +1,14 @@
 fileFormatVersion: 2
 guid: ca5534f7289815e4298d6999490d94c0
-timeCreated: 1438210953
+timeCreated: 1439085501
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - textgameobject: {instanceID: 0}
+  - canvasMainMenu: {instanceID: 0}
+  - canvasSelecionarPersonagens: {instanceID: 0}
+  - somClique: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

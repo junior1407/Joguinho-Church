@@ -4,6 +4,7 @@ using UnityEngine.UI;
 
 public class Dado : MonoBehaviour
 {
+	public AudioClip somClique;
 	GameBoardController controller;
 	public Button botao_op;
 	GameObject atual;
@@ -52,11 +53,14 @@ public class Dado : MonoBehaviour
 
 	public void rolar()
 	{
+		AudioSource.PlayClipAtPoint(somClique, Camera.main.transform.position);
 		botao_op.interactable = false;
 		corpo.AddForce (Random.onUnitSphere * força, forceMode);
 		corpo.AddTorque (Random.onUnitSphere * angularTorque, forceMode);
 		Debug.Log ("Inicio rotina");
 		StartCoroutine("rolarDados");
+
+
 
 
 	}

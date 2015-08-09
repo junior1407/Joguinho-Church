@@ -8,16 +8,19 @@ public class MenuSelect : MonoBehaviour {
 	public string  texto;
 	public GameObject canvasMainMenu;
 	public GameObject canvasSelecionarPersonagens;
-
+	public AudioClip somClique;
 
 
 	public void voltarMenuPrincipalVindoDoMenuSelecionarPersonagens()
 	{
+		AudioSource.PlayClipAtPoint (somClique, Camera.main.transform.position);
 		canvasMainMenu.SetActive (true);
 		canvasSelecionarPersonagens.SetActive (false);
 	}
 	
 	public void comecaJogoRealmente(){
+
+		AudioSource.PlayClipAtPoint(somClique, Camera.main.transform.position);;
 		textgameobject.GetComponent<Text> ();
 		Text text = textgameobject.GetComponent<Text>();
 		Application.LoadLevel ("asda");
@@ -28,6 +31,7 @@ public class MenuSelect : MonoBehaviour {
 
 	
 	public void BotoesDireita(){
+		AudioSource.PlayClipAtPoint(somClique, Camera.main.transform.position);
 		textgameobject.GetComponent<Text> ();
 		Text text = textgameobject.GetComponent<Text>();
 
@@ -61,6 +65,7 @@ public class MenuSelect : MonoBehaviour {
 	}
 
 	public void botaoEsquerdo(){
+		AudioSource.PlayClipAtPoint(somClique, Camera.main.transform.position);
 		textgameobject.GetComponent<Text> ();
 		Text text = textgameobject.GetComponent<Text>();
 
