@@ -1,4 +1,4 @@
-using UnityEngine;
+	using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -299,8 +299,8 @@ public class GameBoardController : MonoBehaviour
 	IEnumerator moveIndividual (int pos_casa, int ordem_player)
 	{
 	
-		float tempo_passado = 0;
-		float tempo_total = 0.1f;
+		float tempo_passado = 0.0f;
+		float tempo_total = 1.0f;
 		//	player_atual.transform.localPosition = casas[pos_casa].getPositionparaPlayer(ordem_player);
 
 		while (tempo_passado<tempo_total) {

@@ -56,8 +56,8 @@ public class Dado : MonoBehaviour
 	{
 		AudioSource.PlayClipAtPoint(somClique, Camera.main.transform.position);
 		botao_op.interactable = false;
-		corpo.AddForce (Random.onUnitSphere * força, forceMode);
-		corpo.AddTorque (Random.onUnitSphere * angularTorque, forceMode);
+		corpo.AddForce (Vector3.up * 200);
+		corpo.AddTorque (Random.onUnitSphere * angularTorque * Mathf.PI, forceMode);
 		Debug.Log ("Inicio rotina");
 		StartCoroutine("rolarDados");
 
