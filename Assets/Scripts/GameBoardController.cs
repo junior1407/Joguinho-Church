@@ -236,7 +236,7 @@ public class GameBoardController : MonoBehaviour
 	public void SpawnaJogadores ()
 	{
 		num_players = Propriedes.numero_de_jogadores;
-		num_players = 4;
+			
 		Instantiate (Resources.Load ("player/Pecaazul")); 
 		if (num_players >= 2) {
 			Instantiate (Resources.Load ("player/PecaVermelha"));
@@ -306,7 +306,7 @@ public class GameBoardController : MonoBehaviour
 		while (tempo_passado<tempo_total) {
 		
 
-			player_atual.transform.localPosition = Vector3.Lerp (player_atual.transform.localPosition, casas [pos_casa].getPositionparaPlayer (ordem_player), tempo_passado / tempo_total);
+			player_atual.transform.position = Vector3.Lerp (player_atual.transform.localPosition, casas [pos_casa].getPositionparaPlayer (ordem_player), tempo_passado / tempo_total);
 			tempo_passado += Time.deltaTime;
 			yield return 0;
 		}
