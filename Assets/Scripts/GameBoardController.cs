@@ -38,6 +38,24 @@ public class GameBoardController : MonoBehaviour
 	public GameObject filho;
 	BaseCasa teste;*/
 
+
+
+
+	public void addFlagPLayerAtual(){
+		GameObject flagzin;
+		flagzin = (GameObject) Instantiate(Resources.Load ("Flag"));
+		flagzin.transform.SetParent (player_atual.transform,false);
+		flagzin.name = "FLAG";
+
+	}
+	public void removeFlagPlayerAtual(){
+		 Transform z;
+		z = player_atual.transform.FindChild ("FLAG");
+		Destroy (z.gameObject);
+	}
+		
+
+
 	public void AdquirePosicoesTabuleiro ()
 	{
 		for (int i=1; i<66; i++) {
@@ -106,7 +124,7 @@ public class GameBoardController : MonoBehaviour
 	public IEnumerator ProximoPlayer ()
 	{
 
-
+		removeFlagPlayerAtual ();
 
 		script_atual = player_atual.GetComponent<PlayerScript> ();
 		int ordem_player_atual = script_atual.ordem;
@@ -120,6 +138,7 @@ public class GameBoardController : MonoBehaviour
 			player_atual = players [0];
 		}
 		Atualizar_Texto ();
+		addFlagPLayerAtual ();
 		script_atual = player_atual.GetComponent<PlayerScript> ();
 		yield return StartCoroutine (CheckarCamera (script_atual));
 		/*if ((script_atual.posicao_atual >= ALGO)&(script_atual.posicao_atual <= ALGO)) {
@@ -207,6 +226,7 @@ public class GameBoardController : MonoBehaviour
 		}
 		//num_players = scriptsplayers.Count;
 		player_atual = players [0];
+		addFlagPLayerAtual ();
 		Atualizar_Texto ();
 		script_atual = player_atual.GetComponent<PlayerScript> ();
 		num_players = players.Length;	
@@ -436,6 +456,8 @@ public class GameBoardController : MonoBehaviour
 
 
 	}
+
+
 	}}
 
 
